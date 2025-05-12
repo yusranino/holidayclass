@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Registering | Holiday Class</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f9ff;
+            min-height: 100vh;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            transform: translateY(0) rotate(0);
+            pointer-events: none;
+            animation: confetti-fall 10s ease-in-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(-20vh) rotate(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        .progress-bar {
+            transition: width 5s linear;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .wave {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15vh;
+            min-height: 100px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="relative overflow-hidden">
+    <!-- Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full bg-gradient-to-br from-blue-100 via-blue-50 to-white -z-10"></div>
+
+    <!-- Animated Wave Background -->
+    <div class="wave -z-5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#3b82f6" fill-opacity="1"
+                d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,202.7C672,203,768,181,864,181.3C960,181,1056,203,1152,208C1248,213,1344,203,1392,197.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 h-screen flex items-center justify-center">
+        <div class="w-full max-w-2xl">
+            <!-- Thank You Card -->
+            <div class="card rounded-2xl shadow-xl p-6 md:p-8">
+                <!-- Header with Icon -->
+                <div class="flex justify-center mb-4 md:mb-6">
+                    <div class="bg-green-100 p-3 md:p-4 rounded-full">
+                        <svg class="w-12 h-12 md:w-16 md:h-16 text-green-500" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Thank You Message -->
+                <h1 class="title text-3xl md:text-4xl font-bold text-center text-gray-800 mb-2 md:mb-4">Terima Kasih!
+                </h1>
+                <h2 class="text-lg md:text-xl font-medium text-center text-blue-600 mb-4 md:mb-6">Pendaftaran Holiday
+                    Class sudah terkirim</h2>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg mb-6">
+                    <p class="text-sm md:text-base text-gray-700">Anda akan mendapat pesan WhatsApp dari kami untuk
+                        konfirmasi selanjutnya</p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col gap-3">
+                    <a href="index.html#kelas" id="redirect-link"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 md:py-3 px-4 rounded-lg transition duration-300 text-center text-sm md:text-base">
+                        Lihat Detail Program
+                    </a>
+                    <a href="index.html"
+                        class="bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 font-medium py-2 md:py-3 px-4 rounded-lg transition duration-300 text-center text-sm md:text-base">
+                        Kembali ke Beranda
+                    </a>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="mt-4 text-center text-gray-600 text-xs md:text-sm">
+                <p>Untuk pertanyaan lebih lanjut, hubungi kami di <a href="mailto:info@inorobo.sch.id"
+                        class="text-blue-600 hover:underline">inorobo.rs@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti elements
+        function createConfetti() {
+            const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+            const confettiCount = 150;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+
+                const size = Math.random() * 8 + 4;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = color;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            createConfetti();
+        });
+    </script>
+</body>
+
+</html>
